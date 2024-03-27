@@ -69,12 +69,13 @@ public class bankaccount {
 
     // When you use a method: instance.deposit() etc...
     public void deposit(long amount_to_add) {
-        this.account_balance = this.account_balance + amount_to_add;
+        // this. no longer needed as this is set to a ready instance
+        account_balance = account_balance + amount_to_add;
     }
 
     public void withdraw(long amount_to_withdraw) {
-        if(this.account_balance > amount_to_withdraw){
-            this.account_balance = this.account_balance - amount_to_withdraw;
+        if(account_balance > amount_to_withdraw){
+            account_balance = account_balance - amount_to_withdraw;
         }
     }
 
