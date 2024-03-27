@@ -2,14 +2,36 @@ package se.lexicon;
 
 public class bankaccount {
     // Fields:
+    // Since fields are not static they can have different values for different objects
     private long account_number;
     private long account_balance;
     private String customer_name;
     private String customer_email;
     private int customer_phone;
 
+    private int customerID;
+    private static int nextCustomerID = 10001;
+
+    // Constructor:
+    public bankaccount(String customer_name, String customer_email, int customer_phone,
+                       long account_number, long account_balance){
+        // This is you call from the outside to create an instance of the class
+        // this. refers to the object being created, making each object unique
+        // customerID is set directly inside constructor
+        this.customerID = nextCustomerID++;
+        this.customer_name = customer_name;
+        this.customer_email = customer_email;
+        this.customer_phone = customer_phone;
+        this.account_number = account_number;
+        this.account_balance = account_balance;
+    }
     // Setters and Getters:
+
+    public int getCustomerID(){
+        return customerID;
+    }
     public void setAccount_number(long account_number){
+        // Setters need no return variable as are reachable throughout the class scope
         this.account_number = account_number;
     }
     public long getAccount_number(){
@@ -45,24 +67,16 @@ public class bankaccount {
         return customer_phone;
     }
 
-    // Constructor:
-    public bankaccount(String customer_name, String customer_email, int customer_phone,
-                       long account_number, long account_balance){
-        this.customer_name = customer_name;
-        this.customer_email = customer_email;
-        this.customer_phone = customer_phone;
-        this.account_number = account_number;
-        this.account_balance = account_balance;
+    // When you use a method: instance.deposit() etc...
+    public void deposit(long amount_to_add) {
+        this.account_balance = this.account_balance + amount_to_add;
     }
 
-    public static long changeBalance(long amount_to_add, long account_number){
-        //todo: implement logic:
-        // loop to find correct account (but loop through what?)
-        // OR: use instance getAccount_balance, do math, setAccount_balance ???
-        // check balance, add/deduct amount to balance (avoid negative balance)
-        return 0;
-
-    // Extra: Have a static counter that increment and assign the account number.
-
+    public void withdraw(long amount_to_withdraw) {
+        if(this.account_balance > amount_to_withdraw){
+            this.account_balance = this.account_balance - amount_to_withdraw;
+        }
     }
+
+
 }

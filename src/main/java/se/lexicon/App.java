@@ -29,5 +29,24 @@ public class App
                 + "phone: " + customer_2.getCustomer_phone() + "\n"
                 + "Account number: " + customer_2.getAccount_number() + "\n"
                 +  "Balance: " + "$" + customer_2.getAccount_balance());
+
+        System.out.println("\n");
+        customer_1.setCustomer_phone(353535);
+        System.out.println("phone: " + customer_1.getCustomer_phone());
+
+        customer_1.deposit(60);
+        System.out.println("Balance: " + "$" + customer_1.getAccount_balance());
+
+        customer_1.withdraw(10);
+        System.out.println("Balance: " + "$" + customer_1.getAccount_balance());
+
+        customer_1.withdraw(200);
+        System.out.println("Balance: " + "$" + customer_1.getAccount_balance());
+
+        System.out.println("Balance: " + "$" + customer_1.getCustomerID());
+        System.out.println("Balance: " + "$" + customer_2.getCustomerID());
+
+
+
     }
 }
